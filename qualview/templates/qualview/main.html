@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+    <head>
+        <title>불량내역</title>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>불량 발생 내역 {{ today }}</h1>
+        </div>
+        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+            <canvas id="myChart" width="400" height="200"></canvas>
+            <script>
+                var ctx = document.getElementById("myChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [{% for line in lines %}
+                                    "{{ line }}"
+                                    {% if not forloop.last %},{% endif %}
+                                {% endfor %}],
+                        datasets: [{
+                            label: '불량수량: ',
+                            data: {{ amounts }},
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </body>
+</html>

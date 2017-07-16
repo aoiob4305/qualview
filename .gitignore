@@ -1,0 +1,9 @@
+.vscode
+qualview/__pycache__
+qualview/*.pyc
+qual/__pycache__
+qual/*.pyc
+*.TXT
+*.txt
+db.sqlite3
+venv
