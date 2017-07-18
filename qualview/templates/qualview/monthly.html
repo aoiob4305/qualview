@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <title>불량내역 - 월실적</title>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1>월간 실적</h1>
+        </div>
+        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+            <canvas id="monthlyChart" width="400" height="200"></canvas>
+            <script>
+                var ctx = document.getElementById("monthlyChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+                        datasets: [{
+                            label: '17년 계획: ',
+                            fill: false,
+                            borderDash: [5, 5],
+                            backgroundColor: "#FF0000",
+                            borderColor: "#FF0000",
+                            data: [4,3,2,5,6,4,3,5,6,6,4,3,3],
+                        },{
+                            label: '17년 실적: ',
+                            fill: false,
+                            backgroundColor: "#0000FF",
+                            borderColor: "#0000FF",
+                            data: [1,5,4,3,5,4,3,5,6,6,4,3,3],
+                        }]
+                    },
+                    options: {
+                        elements: {
+                            line: {
+                                tension: 0,
+                            },
+                        },
+                        scales: {
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "월",
+                                },
+                            }],
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "발생금액",
+                                },
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </body>
+</html>
