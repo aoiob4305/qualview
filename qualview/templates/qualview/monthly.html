@@ -7,9 +7,9 @@
     </head>
     <body>
         <div>
-            <h1>월간 실적</h1>
+            <h1>월간 실적 report</h1>
         </div>
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+        <div class="chart-container" style="position: relative; height:40vh; width:90vw">
             <canvas id="monthlyChart" width="400" height="200"></canvas>
             <script>
                 var ctx = document.getElementById("monthlyChart").getContext('2d');
@@ -21,15 +21,15 @@
                             label: '17년 계획: ',
                             fill: false,
                             borderDash: [5, 5],
-                            backgroundColor: "#FF0000",
-                            borderColor: "#FF0000",
-                            data: [4,3,2,5,6,4,3,5,6,6,4,3,3],
+                            backgroundColor: "#990000",
+                            borderColor: "#990000",
+                            data: [124,233,432,235,236,344,233,135,346,566,324,243,343],
                         },{
                             label: '17년 실적: ',
                             fill: false,
-                            backgroundColor: "#0000FF",
-                            borderColor: "#0000FF",
-                            data: [1,5,4,3,5,4,3,5,6,6,4,3,3],
+                            backgroundColor: "#000099",
+                            borderColor: "#000099",
+                            data: [231,235,124,343,555,344,343,5,6,6,4,3,3],
                         }]
                     },
                     options: {
@@ -48,7 +48,7 @@
                             yAxes: [{
                                 scaleLabel: {
                                     display: true,
-                                    labelString: "발생금액",
+                                    labelString: "발생금액(천원)",
                                 },
                                 ticks: {
                                     beginAtZero:true
