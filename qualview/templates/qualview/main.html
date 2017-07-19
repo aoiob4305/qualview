@@ -7,32 +7,7 @@
     </head>
     <body>
         <div>
-            <h1>불량 발생 내역 {{ today }}</h1>
-        </div>
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-            <canvas id="monthlyChart" width="400" height="200"></canvas>
-            <script>
-                var ctx = document.getElementById("monthlyChart").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
-                        datasets: [{
-                            label: '불량수량: ',
-                            data: [4,3,2,5,6,4,3,5,6,6,4,3,3],
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero:true
-                                }
-                            }]
-                        }
-                    }
-                });
-            </script>
+            <h1>불량 발생 내역 : {{ today }} 기준</h1>
         </div>
         <div class="chart-container" style="position: relative; height:40vh; width:80vw">
             <canvas id="listChart" width="400" height="200"></canvas>
@@ -41,13 +16,16 @@
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: [{% for line in lines %}
-                                    "{{ line }}"
+                        labels: [{% for day, amount in amounts %}
+                                    "{{ day }}"
                                     {% if not forloop.last %},{% endif %}
                                 {% endfor %}],
                         datasets: [{
                             label: '불량수량: ',
-                            data: {{ amounts }},
+                            data: [{% for day, amount in amounts %}
+                                    "{{ amount }}"
+                                    {% if not forloop.last %},{% endif %}
+                                {% endfor %}],
                         }]
                     },
                     options: {
@@ -61,6 +39,21 @@
                     }
                 });
             </script>
+        </div>
+
+        <div>
+            <ul>
+                <li>
+                    등록일 | 등록라인 | 불량현상
+                </li>
+                {% for list in lists %}
+                    {% if list.귀책처 == '821' %}
+                <li>
+                        {{ list.등록일 }} | {{ list.등록라인 }} | {{ list.불량현상 }}
+                </li>    
+                    {% endif %}
+                {% endfor %}
+            </ul>
         </div>
     </body>
 </html>

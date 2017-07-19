@@ -1,6 +1,7 @@
 #-*- coding:utf-8 -*-
 
 import codecs
+import operator
 
 def ansi2utf8(src_filename):
     convenc(src_filename, 'cp949', 'utf8')
@@ -80,10 +81,25 @@ def parse(filename):
         rows = f.readlines()
         errors = []
         datas = []
-        keys = [x.strip() for x in rows[1].split('|')][1:-1]
+        #keys = [x.strip() for x in rows[1].split('|')][1:-1]
+        keys = [x.replace(" ","") for x in rows[1].split('|')][1:-1]
         for row in rows[3:]:
             #?문자 발생시 구분기호로 변경
             row = row.replace('?','|')
             data = [x.strip() for x in row.split('|')][1:-1]
             datas.append(makedict(keys, data))
     return datas
+
+def getFailAmounts(lists):
+    amounts = {}
+    for item in lists[:-1]:
+        try:
+            amount = int(item['불량수량'])
+            #print(amount)
+            amounts[item['생산일']] = amounts[item['생산일']] + amount
+        except KeyError:
+            amounts[item['생산일']] = amount
+
+        sorted_amounts = sorted(amounts.items(), key=operator.itemgetter(0))
+
+    return sorted_amounts
