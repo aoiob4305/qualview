@@ -1,18 +1,17 @@
-<!doctype html>
-<html>
-    <head>
-        <title>불량내역 - 월실적</title>
-        <meta charset="utf-8">
+{% extends "qualview/base.html" %}
+{% block title %}불량내역 - 월실적{% endblock %}
+{% block script %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
-    </head>
-    <body>
-        <div id=title>
-            <h1>xx팀 17년 OS&D 달성현황</h1>
+{% endblock %}
+{% block contents %}
+        <div>
+            <h1 style="float: left;">'17년 실적</h1>
+            <h4 style="float: right;">작성일: {{ today }}</h4>
         </div>
-        <div class="chart-container" style="position: relative; height:40vh; width:90vw">
-            <canvas id="monthlyChart" width="400" height="200"></canvas>
+        <div class="chart-container">
+            <canvas id="listChart"></canvas>
             <script>
-                var ctx = document.getElementById("monthlyChart").getContext('2d');
+                var ctx = document.getElementById("listChart").getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'line',
                     data: {
@@ -81,5 +80,4 @@
         <div id=analyse>
             증감분석
         </div>
-    </body>
-</html>
+{% endblock %}

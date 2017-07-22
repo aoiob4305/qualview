@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} {% endblock %}</title>
+        {% block script %}{% endblock %}
+        <style>
+        #char-container {
+            border: 1px solid red;
+            display: block;
+            width: 600px;
+            height: 200px;
+        }
+        #listChart {
+            border: 1px solid blue;
+            display: block;
+            width: 600vw;
+            height: 200px;
+        }
+        #table-container {
+            border: 1px solid green;
+            margin-top: 10px;
+            margin-bottom; 10px;
+        }
+    </style>
+    </head>
+
+    <body>
+        {% block contents %}{% endblock %}
+    </body>
+</html>
