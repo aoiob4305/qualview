@@ -5,7 +5,7 @@
 {% endblock %}
 {% block contents %}
         <div>
-            <h1 style="float: left;">'17년 실적</h1>
+            <h2 style="float: left;">※ 설비보전팀 17년 OS&D 달성 현황</h2>
             <h4 style="float: right;">작성일: {{ today }}</h4>
         </div>
         <div class="chart-container">
@@ -20,15 +20,15 @@
                             label: '17년 계획: ',
                             fill: false,
                             borderDash: [5, 5],
-                            backgroundColor: "#990000",
-                            borderColor: "#990000",
-                            data: [124,233,432,235,236,344,233,135,346,566,324,243,343],
+                            backgroundColor: "#550000",
+                            borderColor: "#550000",
+                            data: [2212,2055,2503,2198,2367,2433,2176,2071,2617,2144,2752,2472],
                         },{
                             label: '17년 실적: ',
                             fill: false,
-                            backgroundColor: "#000099",
-                            borderColor: "#000099",
-                            data: [231,235,124,343,555,344,343,5,6,6,4,3,3],
+                            backgroundColor: "#000055",
+                            borderColor: "#000055",
+                            data: [2289,1740,2536,1680,2806,1717],
                         }]
                     },
                     options: {
@@ -59,25 +59,9 @@
             </script>
         </div>
         <div id=table>
-            월별실적 테이블
-            <table border=1>
-                <tr>
-                <td>1월</td>
-                <td>2월</td>
-                <td>3월</td>
-                <td>4월</td>
-                <td>5월</td>
-                <td>6월</td>
-                <td>7월</td>
-                <td>8월</td>
-                <td>9월</td>
-                <td>10월</td>
-                <td>11월</td>
-                <td>12월</td>
-                </tr>
-            </table>
+            {% include "qualview/t_monthly.html" %}
         </div>
         <div id=analyse>
-            증감분석
+            {% include "qualview/t_monthly_a.html" %}
         </div>
 {% endblock %}
